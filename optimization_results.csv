@@ -1,0 +1,9 @@
+Technique,Accuracy,Model Size (KB),Inference Time (ms),Training Time (s),Notes,Accuracy Change (%),Size Reduction (%),Speed Improvement (%)
+Baseline,0.9929999709129333,2679.8046875,0.06689999103546143,41.69041848182678,Original model without optimization,0.0,0.0,0.0
+1. PCA (200 components),0.9797999858856201,1031.384765625,0.04420559406280517,11.612326622009277,Reduced features from 784 to 200,-1.33,61.51,33.92
+2. Hyperparameter Tuning,0.9887999892234802,2682.357421875,0.08066442012786865,24.35388708114624,Optimized architecture and learning rate,-0.42,-0.1,-20.57
+3. Model Pruning (80%),0.9915000200271606,907.4033203125,0.08087186813354491,18.662219285964966,80% of weights pruned,-0.15,66.14,-20.88
+4a. Dynamic Quantization,0.9915,227.8828125,0.03131434917449952,0.0,"Weights: INT8, Activations: FP32",-0.15,91.5,53.19
+4b. Full Integer Quantization,0.9918,230.9140625,0.04968390464782715,0.0,Weights & Activations: INT8,-0.12,91.38,25.73
+5. Ensemble (3 models),0.9931,4020.537109375,0.3318215131759643,43.20197296142578,Soft voting of 3 CNN architectures,0.01,-50.03,-396.0
+6. CPU (No GPU),0.9873999953269958,2679.822265625,0.07451951503753662,15.323383092880249,CPU training - GPU would be 5-10x faster,-0.56,-0.0,-11.39
